@@ -1,0 +1,11 @@
+
+
+# curl https://api.ipinfo.io/lite/8.8.8.8?token=74202091c9d008
+GET https://api.ipinfo.io/lite/8.8.8.8?token=74202091c9d008
+
+
+###
+GET https://api.ip2location.io/?key=A804D17F1EE16FBE269FE00610B95C97&ip=1.1.1.1
+
+###
+GET https://api.ip2location.io/?key=A804D17F1EE16FBE269FE00610B95C97&ip=179.109.200.10

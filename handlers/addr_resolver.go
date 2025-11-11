@@ -1,0 +1,38 @@
+package handlers
+
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/go-yaaf/yaaf-network-utils/model"
+	"github.com/go-yaaf/yaaf-network-utils/utils"
+	"net/http"
+)
+
+func AddrResolveHandler(c *gin.Context) {
+	req := model.BigQueryRequest{}
+	if err := c.BindJSON(&req); err != nil {
+		c.JSON(http.StatusOK, model.NewBigQueryResponse([]string{""}))
+		return
+	}
+
+	// Build the list
+	replies := make([]string, len(req.Calls))
+	for i, call := range req.Calls {
+		var ip string
+		if len(call) > 0 {
+			ip = call[0]
+		}
+		replies[i] = lookupAddrIP(ip)
+	}
+	c.JSON(http.StatusOK, model.NewBigQueryResponse(replies))
+}
+
+func lookupAddrIP(ip string) string {
+	if ip == "" {
+		return ""
+	}
+	if geo, err := utils.IPUtils().AddressLookup(ip); err != nil {
+		return ""
+	} else {
+		return geo
+	}
+}

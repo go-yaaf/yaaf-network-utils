@@ -1,0 +1,35 @@
+### Test IP DNS resolver
+POST http://localhost:8080/dns
+Content-Type: application/json
+
+{
+  "requestId": "9883774875",
+  "caller": "http test",
+  "sessionUser": "motty@shieldiot.io",
+  "calls": [["179.109.200.10"], ["157.240.222.6"], ["2.16.197.142"], ["34.74.165.40"]]
+}
+
+###
+POST http://localhost:8080/geo
+Content-Type: application/json
+
+{
+  "requestId": "9883774875",
+  "caller": "http test",
+  "sessionUser": "motty@shieldiot.io",
+  "calls": [["179.109.200.10"], ["157.240.222.6"], ["2.16.197.142"], ["34.74.165.40"]]
+}
+
+###
+
+POST http://localhost:8080/addr
+Content-Type: application/json
+
+{
+  "requestId": "9883774875",
+  "caller": "http test",
+  "sessionUser": "motty@shieldiot.io",
+  "calls": [["179.109.200.10"], ["157.240.222.6"], ["2.16.197.142"], ["34.74.165.40"]]
+}
+
+###
