@@ -1,10 +1,13 @@
 package handlers
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/go-yaaf/yaaf-network-utils/model"
-	"github.com/go-yaaf/yaaf-network-utils/utils"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+
+	"github.com/go-yaaf/yaaf-common-net/utils"
+
+	"github.com/go-yaaf/yaaf-network-utils/model"
 )
 
 func GeoIPResolveHandler(c *gin.Context) {
@@ -30,7 +33,7 @@ func lookupGeoIP(ip string) string {
 	if ip == "" {
 		return ""
 	}
-	if geo, err := utils.IPUtils().GeoLookupWKT(ip); err != nil {
+	if geo, err := utils.IPUtils("").GeoLookupWKT(ip); err != nil {
 		return ""
 	} else {
 		return geo
